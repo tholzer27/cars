@@ -8,12 +8,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RestrictAuthByIp
 {
-    private const ALLOWED_IP = '31.165.85.175';
+    public const ALLOWED_IP = '31.165.85.175';
 
     public function handle(Request $request, Closure $next): Response
     {
-        abort_unless($request->ip() === self::ALLOWED_IP, 404);
+        abort_unless(self::allows($request), 404);
 
         return $next($request);
+    }
+
+    public static function allows(Request $request): bool
+    {
+        return $request->ip() === self::ALLOWED_IP;
     }
 }

@@ -7,6 +7,7 @@ import { booking, login } from '@/routes';
 
 const page = usePage();
 const isAuthenticated = computed(() => Boolean(page.props.auth?.user));
+const canAccessAuth = computed(() => Boolean(page.props.auth?.canAccessAuth));
 const currentPath = computed(() => page.url.split('?')[0]);
 const bookingHref = computed(() => booking());
 const navigation = [
@@ -101,6 +102,7 @@ const packages = [
                 </div>
                 <div v-else class="flex items-center gap-3">
                     <Link
+                        v-if="canAccessAuth"
                         :href="login()"
                         class="text-sm font-semibold text-zinc-300 hover:text-white"
                     >
