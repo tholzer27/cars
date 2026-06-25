@@ -2,6 +2,7 @@
 import { Head, Link, usePage } from '@inertiajs/vue3';
 import { Check, LogOut, Sparkles } from 'lucide-vue-next';
 import { computed } from 'vue';
+import AppLogoIcon from '@/components/AppLogoIcon.vue';
 import PublicFooter from '@/components/PublicFooter.vue';
 import { booking, login } from '@/routes';
 
@@ -64,9 +65,9 @@ const packages = [
             >
                 <Link href="/" class="flex items-center gap-3">
                     <span
-                        class="flex h-10 w-10 items-center justify-center border border-[#f4a340] bg-[#f4a340] font-black text-black"
+                        class="flex h-10 w-10 items-center justify-center border border-[#f4a340] bg-[#111111] text-[#f4a340]"
                     >
-                        CS
+                        <AppLogoIcon class="h-8 w-8" />
                     </span>
                     <span class="text-lg font-black tracking-wide">CarSpa</span>
                 </Link>
